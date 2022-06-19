@@ -17,6 +17,38 @@ void addLog(string message){
     logFile.close();
 }
 
+tuple <int, int, float, long> makePorownanie(fstream &fileA, fstream &fileB){
+
+    int roznica = 0, porownanie = 0;
+    long sizeInBytes = 0L;
+    float ber = 0.;
+    char a, b;
+    string bitSetA, bitSetB;
+
+    while(!fileA.eof()){
+
+        a = fileA.get();
+        b = fileB.get();
+        sizeInBytes++;
+
+        if(a != b){
+            bitSetA = bitset<8>(a).to_string();
+            bitSetB = bitset<8>(b).to_string();
+
+            for(int i = 7; i >= 0; i--){
+                if(bitSetA[i] != bitSetB[i]) diff++;
+                porownanie++;
+            }
+        }
+    }
+
+    sizeInBytes -= 1;
+    ber = float(roznica) / (sizeInBytes * 8.) * 100.;
+
+    tuple <int, int, float, long> results = make_tuple(porownanie, roznica, ber);
+    return results;
+}
+
 int main(int argc, char** argv){
        
     fstream fileA, fileB;
