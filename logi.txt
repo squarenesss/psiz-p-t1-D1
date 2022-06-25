@@ -1,0 +1,17 @@
+Sat Jun 25 16:45:43 2022 : Zostaly otwarte dwa pliki: plik1A / plik1B
+Sat Jun 25 16:45:43 2022 : Rozpoczecie analizy plikow
+Sat Jun 25 16:45:43 2022 : Zakonczenie analizy plikow
+Sat Jun 25 16:45:43 2022 : Wyniki analizy: Porównane bity: 800; Rozne bity: 0; BER: 0.00%; Czas analizy: 0 ms
+Sat Jun 25 16:45:43 2022 : Pliki zostały zakmniete
+
+Sat Jun 25 16:46:15 2022 : Zostaly otwarte dwa pliki: plik2A / plik2B
+Sat Jun 25 16:46:15 2022 : Rozpoczecie analizy plikow
+Sat Jun 25 16:46:15 2022 : Zakonczenie analizy plikow
+Sat Jun 25 16:46:15 2022 : Wyniki analizy: Porownane bity: 800; Rozne bity: 10; BER: 1.25%; Czas analizy: 0 ms
+Sat Jun 25 16:46:15 2022 : Pliki zostały zakmniete
+
+Sat Jun 25 16:47:25 2022 : Zostaly otwarte dwa pliki: plik3A / plik3B
+Sat Jun 25 16:47:25 2022 : Rozpoczecie analizy plikow
+Sat Jun 25 16:49:43 2022 : Zakonczenie analizy plikow
+Sat Jun 25 16:49:43 2022 : Wyniki analizy: Porownane bity: 3355443200; Rozne bity: 838860800; BER: 25.00%; Czas analizy: 138300 ms
+Sat Jun 25 16:49:43 2022 : Pliki zostały zakmniete
