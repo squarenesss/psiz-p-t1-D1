@@ -25,6 +25,9 @@ tuple <int, int, float, long> makePorownanie(fstream &fileA, fstream &fileB){
     char a, b;
     string bitSetA, bitSetB;
 
+    addLog("Rozpoczecie analizy plikow");
+    auto start = chrono::high_resolution_clock::now();
+    
     while(!fileA.eof()){
 
         a = fileA.get();
@@ -45,7 +48,11 @@ tuple <int, int, float, long> makePorownanie(fstream &fileA, fstream &fileB){
     sizeInBytes -= 1;
     ber = float(roznica) / (sizeInBytes * 8.) * 100.;
 
-    tuple <int, int, float, long> results = make_tuple(porownanie, roznica, ber);
+    auto stop = chrono::high_resolution_clock::now();
+    createLog("Zakonczenie analizy plikow");
+    auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
+    
+    tuple <int, int, float, long> results = make_tuple(porownanie, roznica, ber, duration.count());
     return results;
 }
 
@@ -55,12 +62,25 @@ int main(int argc, char** argv){
     fileA.open(argv[1]);
     fileB.open(argv[2]);
     if(!fileA.is_open() || !fileB.is_open()){
-        addLog("Nie można otworzyć plików");
+        addLog("Nie mozna otworzyc plikow");
         addLog("Zatrzymanie programu");
         return 0;
     } else {
-        addLog((string) "Zostały otwarte dwa pliki:" + argv[1] + "/" + argv[2]);
+        addLog((string) "Zostaly otwarte dwa pliki:" + argv[1] + "/" + argv[2]);
     }
-
+    
+    tuple<int, int, float, long> results = makePorownanie(fileA, fileB);
+    
+    string resultMsg = "Wyniki analizy: Porownane bity: " + to_string(get<0>(results)) + 
+                        "; Rozne bity: " + to_string(get<1>(results)) + 
+                        "; BER: " + to_string(get<2>(results)) + "%" + 
+                        "; Czas analizy: " + to_string(get<3>(results)) + " ms";
+    addLog(resultMsg);
+    cout << resultMsg << endl;
+    
+    fileA.close();
+    fileB.close();
+    addLog("Pliki zostały zakmniete")
+    
     return 0;
 }
